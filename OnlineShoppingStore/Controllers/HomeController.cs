@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineShoppingStore.Models.Home;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,6 +26,12 @@ namespace OnlineShoppingStore.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult ShopPage(int? page)
+        {
+
+            HomeIndexViewModel model = new HomeIndexViewModel();
+            return View(model.CreatModel());
         }
     }
 }

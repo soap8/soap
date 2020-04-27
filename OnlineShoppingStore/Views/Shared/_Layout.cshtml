@@ -8,7 +8,6 @@
     <meta name="description" content="">
     <meta name="robots" content="noindex, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     @*@Styles.Render("~/Content/css")*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -19,7 +18,6 @@
     <link rel="stylesheet" href="~/Content/ionicons.min.css" />
     <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
     <link rel="stylesheet" href="~/Content/pe-icon-7-stroke.css" />
-
     <!-- Plugins stylesheet -->
     <link rel="stylesheet" href="~/Content/plugins.css" />
 
@@ -128,10 +126,12 @@
                                                         <option>Blazers</option>
                                                         <option>Microphones</option>
                                                     </select>
-                                                    <div class="search-wrapper">
-                                                        <input type="text" placeholder="Search">
-                                                        <button class="header-search-btn" type="submit"><i class="ion ion-ios-search"></i></button>
-                                                    </div>
+                                                    <form method="post">
+                                                        <div class="search-wrapper">
+                                                            <input type="text" name ="search" placeholder="Search">
+                                                            <button class="header-search-btn" type="submit"><i class="ion ion-ios-search"></i></button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </form>
                                         </div>
@@ -223,12 +223,6 @@
                     <ul class="text-left">
                         <li>
                             <a href="index.html"><span>Home</span></a>
-                            <ul>
-                                <li><a href="index.html">Home Page 1</a></li>
-                                <li><a href="index-2.html">Home Page 2</a></li>
-                                <li><a href="index-3.html">Home Page 3</a></li>
-                                <li><a href="index-4.html">Home Page 4</a></li>
-                            </ul>
                         </li>
                         <li class="mega" data-columns="3">
                             <a href="my-account.html"><span>Pages</span></a>
@@ -241,7 +235,6 @@
                                         <li><a href="register.html">Register</a></li>
                                     </ul>
                                 </li>
-
                                 <li>
                                     <a href="#" class="mega-menu-title"><h3>Inner pages 02</h3></a>
                                     <ul>
@@ -263,14 +256,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="shop-grid.html"><span>Shop Pages</span></a>
-                            <ul>
-                                <li><a href="shop-grid.html">Shop Grid</a></li>
-                                <li><a href="shop-list.html">Shop List</a></li>
-                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
-                                <li><a href="single-product.html">Single Product Page</a></li>
-                            </ul>
+
                         </li>
                         <li>
                             <a href="blog.html"><span>Blog Pages</span></a>
@@ -280,6 +266,9 @@
                                 <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
                                 <li><a href="blog-details.html">Blog Details</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="../Home/ShopPage"><span>Shop Page</span></a>
                         </li>
                         <li><a href="about.html"><span>About Us</span></a></li>
                         <li><a href="contact.html"><span>Contact Us</span></a></li>
@@ -307,6 +296,7 @@
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                                     <div class="footer-payment">
+                                        F
                                         <ul>
 
                                             <li><a href="#"><img src="~/Images/icons/payment-1.jpg" alt="Payment Icons"></a></li>
@@ -321,7 +311,6 @@
                             </div> <!-- end of row -->
                         </div> <!-- end of container -->
                     </div> <!-- end of footer-copyright -->
-                    @*<p>&copy; @DateTime.Now.Year - OnlineShopingStore. All right reserved.</p>*@
                 </div>
 
                 <div class="col-md-6 col-sm-6 copyright-right">
@@ -337,7 +326,6 @@
         </div>
 
     </footer>
-    </div>
     <script src="~/Scripts/jquery.1.12.4.min.js"></script>
 
     <!-- Popper JS -->

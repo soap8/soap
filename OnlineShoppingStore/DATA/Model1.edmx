@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_CART">
+          <Key>
+            <PropertyRef Name="CARTID" />
+          </Key>
+          <Property Name="CARTID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTID" Type="number" Precision="38" Scale="0" />
+          <Property Name="MEMBERID" Type="number" Precision="38" Scale="0" />
+          <Property Name="CARTSTATUSID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TBL_CARTSTATUS">
+          <Key>
+            <PropertyRef Name="CARTSTATUSID" />
+          </Key>
+          <Property Name="CARTSTATUSID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CARTSTATUS" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBL_CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORYID" />
+          </Key>
+          <Property Name="CATEGORYID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CATEGORYNAME" Type="varchar2" MaxLength="500" />
+          <Property Name="ISACTIVE" Type="number" Precision="1" Scale="0" />
+          <Property Name="ISDELETE" Type="number" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="TBL_MEMBERROLE">
+          <Key>
+            <PropertyRef Name="MEMBERROLEID" />
+          </Key>
+          <Property Name="MEMBERROLEID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MEMBERID" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROLEID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TBL_MEMBERS">
+          <Key>
+            <PropertyRef Name="MEMBERID" />
+          </Key>
+          <Property Name="MEMBERID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="varchar2" MaxLength="500" />
+          <Property Name="LASTNAME" Type="varchar2" MaxLength="500" />
+          <Property Name="EMAILID" Type="varchar2" MaxLength="500" />
+          <Property Name="PASSWORDID" Type="varchar2" MaxLength="500" />
+          <Property Name="ISACTIVE" Type="number" Precision="1" Scale="0" />
+          <Property Name="ISDELETE" Type="number" Precision="1" Scale="0" />
+          <Property Name="CREATEDON" Type="date" />
+          <Property Name="MODIFIEDON" Type="date" />
+        </EntityType>
+        <EntityType Name="TBL_PRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCTID" />
+          </Key>
+          <Property Name="PRODUCTID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTNAME" Type="varchar2" MaxLength="200" />
+          <Property Name="CATEGORYID" Type="number" Precision="38" Scale="0" />
+          <Property Name="ISACTIVE" Type="number" Precision="1" Scale="0" />
+          <Property Name="ISDELETE" Type="number" Precision="1" Scale="0" />
+          <Property Name="CREATEDATE" Type="date" />
+          <Property Name="MODIFIEDDATE" Type="date" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="500" />
+          <Property Name="PRODUCTIMAGE" Type="varchar2" MaxLength="500" />
+          <Property Name="ISFEATURED" Type="number" Precision="1" Scale="0" />
+          <Property Name="QUANTITY" Type="number" Precision="38" Scale="0" />
+          <Property Name="PRICE" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TBL_ROLES">
+          <Key>
+            <PropertyRef Name="ROLEID" />
+          </Key>
+          <Property Name="ROLEID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROLENAME" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBL_SHIPPINGDETAILS">
+          <Key>
+            <PropertyRef Name="SHIPPINGDETAILID" />
+          </Key>
+          <Property Name="SHIPPINGDETAILID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MEMBERID" Type="number" Precision="38" Scale="0" />
+          <Property Name="ADDRESS" Type="varchar2" MaxLength="500" />
+          <Property Name="CITY" Type="varchar2" MaxLength="500" />
+          <Property Name="STATE" Type="varchar2" MaxLength="500" />
+          <Property Name="COUNTRY" Type="varchar2" MaxLength="500" />
+          <Property Name="ZIPCODE" Type="varchar2" MaxLength="500" />
+          <Property Name="ORDERID" Type="number" Precision="38" Scale="0" />
+          <Property Name="AMOUNTPAID" Type="number" Precision="38" Scale="0" />
+          <Property Name="PAYMENTTYPE" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBL_SLIDEIMAGE">
+          <Key>
+            <PropertyRef Name="SLIDEID" />
+          </Key>
+          <Property Name="SLIDEID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SLIDTITLE" Type="varchar2" MaxLength="500" />
+          <Property Name="SLIDEIMAGE" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "HR.EMP_DETAILS_VIEW" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="EMP_DETAILS_VIEW">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="JOB_ID" />
+            <PropertyRef Name="LAST_NAME" />
+            <PropertyRef Name="DEPARTMENT_NAME" />
+            <PropertyRef Name="JOB_TITLE" />
+            <PropertyRef Name="CITY" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="JOB_ID" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="MANAGER_ID" Type="number" Precision="6" Scale="0" />
+          <Property Name="DEPARTMENT_ID" Type="number" Precision="4" Scale="0" />
+          <Property Name="LOCATION_ID" Type="number" Precision="4" Scale="0" />
+          <Property Name="COUNTRY_ID" Type="char" MaxLength="2" />
+          <Property Name="FIRST_NAME" Type="varchar2" MaxLength="20" />
+          <Property Name="LAST_NAME" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="SALARY" Type="number" Precision="8" Scale="2" />
+          <Property Name="COMMISSION_PCT" Type="number" Precision="2" Scale="2" />
+          <Property Name="DEPARTMENT_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="JOB_TITLE" Type="varchar2" MaxLength="35" Nullable="false" />
+          <Property Name="CITY" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="STATE_PROVINCE" Type="varchar2" MaxLength="25" />
+          <Property Name="COUNTRY_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="REGION_NAME" Type="varchar2" MaxLength="25" />
+        </EntityType>
+        <Association Name="CATEGORYID_FK">
+          <End Role="TBL_CATEGORY" Type="Self.TBL_CATEGORY" Multiplicity="0..1" />
+          <End Role="TBL_PRODUCT" Type="Self.TBL_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CATEGORY">
+              <PropertyRef Name="CATEGORYID" />
+            </Principal>
+            <Dependent Role="TBL_PRODUCT">
+              <PropertyRef Name="CATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MEMBERS_ID">
+          <End Role="TBL_MEMBERS" Type="Self.TBL_MEMBERS" Multiplicity="0..1" />
+          <End Role="TBL_SHIPPINGDETAILS" Type="Self.TBL_SHIPPINGDETAILS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MEMBERS">
+              <PropertyRef Name="MEMBERID" />
+            </Principal>
+            <Dependent Role="TBL_SHIPPINGDETAILS">
+              <PropertyRef Name="MEMBERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCT_ID">
+          <End Role="TBL_PRODUCT" Type="Self.TBL_PRODUCT" Multiplicity="0..1" />
+          <End Role="TBL_CART" Type="Self.TBL_CART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCT">
+              <PropertyRef Name="PRODUCTID" />
+            </Principal>
+            <Dependent Role="TBL_CART">
+              <PropertyRef Name="PRODUCTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="TBL_CART" EntityType="Self.TBL_CART" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="TBL_CARTSTATUS" EntityType="Self.TBL_CARTSTATUS" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="TBL_CATEGORY" EntityType="Self.TBL_CATEGORY" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="TBL_MEMBERROLE" EntityType="Self.TBL_MEMBERROLE" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="TBL_MEMBERS" EntityType="Self.TBL_MEMBERS" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="TBL_PRODUCT" EntityType="Self.TBL_PRODUCT" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="TBL_ROLES" EntityType="Self.TBL_ROLES" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="TBL_SHIPPINGDETAILS" EntityType="Self.TBL_SHIPPINGDETAILS" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="TBL_SLIDEIMAGE" EntityType="Self.TBL_SLIDEIMAGE" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="EMP_DETAILS_VIEW" EntityType="Self.EMP_DETAILS_VIEW" store:Type="Views" store:Schema="HR">
+            <DefiningQuery>SELECT 
+"EMP_DETAILS_VIEW"."EMPLOYEE_ID" AS "EMPLOYEE_ID", 
+"EMP_DETAILS_VIEW"."JOB_ID" AS "JOB_ID", 
+"EMP_DETAILS_VIEW"."MANAGER_ID" AS "MANAGER_ID", 
+"EMP_DETAILS_VIEW"."DEPARTMENT_ID" AS "DEPARTMENT_ID", 
+"EMP_DETAILS_VIEW"."LOCATION_ID" AS "LOCATION_ID", 
+"EMP_DETAILS_VIEW"."COUNTRY_ID" AS "COUNTRY_ID", 
+"EMP_DETAILS_VIEW"."FIRST_NAME" AS "FIRST_NAME", 
+"EMP_DETAILS_VIEW"."LAST_NAME" AS "LAST_NAME", 
+"EMP_DETAILS_VIEW"."SALARY" AS "SALARY", 
+"EMP_DETAILS_VIEW"."COMMISSION_PCT" AS "COMMISSION_PCT", 
+"EMP_DETAILS_VIEW"."DEPARTMENT_NAME" AS "DEPARTMENT_NAME", 
+"EMP_DETAILS_VIEW"."JOB_TITLE" AS "JOB_TITLE", 
+"EMP_DETAILS_VIEW"."CITY" AS "CITY", 
+"EMP_DETAILS_VIEW"."STATE_PROVINCE" AS "STATE_PROVINCE", 
+"EMP_DETAILS_VIEW"."COUNTRY_NAME" AS "COUNTRY_NAME", 
+"EMP_DETAILS_VIEW"."REGION_NAME" AS "REGION_NAME"
+FROM "HR"."EMP_DETAILS_VIEW" "EMP_DETAILS_VIEW"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="CATEGORYID_FK" Association="Self.CATEGORYID_FK">
+            <End Role="TBL_CATEGORY" EntitySet="TBL_CATEGORY" />
+            <End Role="TBL_PRODUCT" EntitySet="TBL_PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="MEMBERS_ID" Association="Self.MEMBERS_ID">
+            <End Role="TBL_MEMBERS" EntitySet="TBL_MEMBERS" />
+            <End Role="TBL_SHIPPINGDETAILS" EntitySet="TBL_SHIPPINGDETAILS" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCT_ID" Association="Self.PRODUCT_ID">
+            <End Role="TBL_PRODUCT" EntitySet="TBL_PRODUCT" />
+            <End Role="TBL_CART" EntitySet="TBL_CART" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_CART">
+          <Key>
+            <PropertyRef Name="CARTID" />
+          </Key>
+          <Property Name="CARTID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="MEMBERID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CARTSTATUSID" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TBL_PRODUCT" Relationship="Self.PRODUCT_ID" FromRole="TBL_CART" ToRole="TBL_PRODUCT" />
+        </EntityType>
+        <EntityType Name="TBL_CARTSTATUS">
+          <Key>
+            <PropertyRef Name="CARTSTATUSID" />
+          </Key>
+          <Property Name="CARTSTATUSID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CARTSTATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORYID" />
+          </Key>
+          <Property Name="CATEGORYID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CATEGORYNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+          <Property Name="ISDELETE" Type="Boolean" />
+          <NavigationProperty Name="TBL_PRODUCT" Relationship="Self.CATEGORYID_FK" FromRole="TBL_CATEGORY" ToRole="TBL_PRODUCT" />
+        </EntityType>
+        <EntityType Name="TBL_MEMBERROLE">
+          <Key>
+            <PropertyRef Name="MEMBERROLEID" />
+          </Key>
+          <Property Name="MEMBERROLEID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MEMBERID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROLEID" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TBL_MEMBERS">
+          <Key>
+            <PropertyRef Name="MEMBERID" />
+          </Key>
+          <Property Name="MEMBERID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EMAILID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORDID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+          <Property Name="ISDELETE" Type="Boolean" />
+          <Property Name="CREATEDON" Type="DateTime" />
+          <Property Name="MODIFIEDON" Type="DateTime" />
+          <NavigationProperty Name="TBL_SHIPPINGDETAILS" Relationship="Self.MEMBERS_ID" FromRole="TBL_MEMBERS" ToRole="TBL_SHIPPINGDETAILS" />
+        </EntityType>
+        <EntityType Name="TBL_PRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCTID" />
+          </Key>
+          <Property Name="PRODUCTID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CATEGORYID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+          <Property Name="ISDELETE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" />
+          <Property Name="MODIFIEDDATE" Type="DateTime" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCTIMAGE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ISFEATURED" Type="Boolean" />
+          <Property Name="QUANTITY" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PRICE" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TBL_CART" Relationship="Self.PRODUCT_ID" FromRole="TBL_PRODUCT" ToRole="TBL_CART" />
+          <NavigationProperty Name="TBL_CATEGORY" Relationship="Self.CATEGORYID_FK" FromRole="TBL_PRODUCT" ToRole="TBL_CATEGORY" />
+        </EntityType>
+        <EntityType Name="TBL_ROLES">
+          <Key>
+            <PropertyRef Name="ROLEID" />
+          </Key>
+          <Property Name="ROLEID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROLENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_SHIPPINGDETAILS">
+          <Key>
+            <PropertyRef Name="SHIPPINGDETAILID" />
+          </Key>
+          <Property Name="SHIPPINGDETAILID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MEMBERID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ADDRESS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="STATE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ZIPCODE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ORDERID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="AMOUNTPAID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PAYMENTTYPE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_MEMBERS" Relationship="Self.MEMBERS_ID" FromRole="TBL_SHIPPINGDETAILS" ToRole="TBL_MEMBERS" />
+        </EntityType>
+        <EntityType Name="TBL_SLIDEIMAGE">
+          <Key>
+            <PropertyRef Name="SLIDEID" />
+          </Key>
+          <Property Name="SLIDEID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SLIDTITLE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SLIDEIMAGE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EMP_DETAILS_VIEW">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="JOB_ID" />
+            <PropertyRef Name="LAST_NAME" />
+            <PropertyRef Name="DEPARTMENT_NAME" />
+            <PropertyRef Name="JOB_TITLE" />
+            <PropertyRef Name="CITY" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+          <Property Name="JOB_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MANAGER_ID" Type="Int32" />
+          <Property Name="DEPARTMENT_ID" Type="Int16" />
+          <Property Name="LOCATION_ID" Type="Int16" />
+          <Property Name="COUNTRY_ID" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SALARY" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="COMMISSION_PCT" Type="Decimal" Precision="2" Scale="2" />
+          <Property Name="DEPARTMENT_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JOB_TITLE" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATE_PROVINCE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="COUNTRY_NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="REGION_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="PRODUCT_ID">
+          <End Role="TBL_PRODUCT" Type="Self.TBL_PRODUCT" Multiplicity="0..1" />
+          <End Role="TBL_CART" Type="Self.TBL_CART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCT">
+              <PropertyRef Name="PRODUCTID" />
+            </Principal>
+            <Dependent Role="TBL_CART">
+              <PropertyRef Name="PRODUCTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CATEGORYID_FK">
+          <End Role="TBL_CATEGORY" Type="Self.TBL_CATEGORY" Multiplicity="0..1" />
+          <End Role="TBL_PRODUCT" Type="Self.TBL_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CATEGORY">
+              <PropertyRef Name="CATEGORYID" />
+            </Principal>
+            <Dependent Role="TBL_PRODUCT">
+              <PropertyRef Name="CATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MEMBERS_ID">
+          <End Role="TBL_MEMBERS" Type="Self.TBL_MEMBERS" Multiplicity="0..1" />
+          <End Role="TBL_SHIPPINGDETAILS" Type="Self.TBL_SHIPPINGDETAILS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MEMBERS">
+              <PropertyRef Name="MEMBERID" />
+            </Principal>
+            <Dependent Role="TBL_SHIPPINGDETAILS">
+              <PropertyRef Name="MEMBERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_CART" EntityType="Self.TBL_CART" />
+          <EntitySet Name="TBL_CARTSTATUS" EntityType="Self.TBL_CARTSTATUS" />
+          <EntitySet Name="TBL_CATEGORY" EntityType="Self.TBL_CATEGORY" />
+          <EntitySet Name="TBL_MEMBERROLE" EntityType="Self.TBL_MEMBERROLE" />
+          <EntitySet Name="TBL_MEMBERS" EntityType="Self.TBL_MEMBERS" />
+          <EntitySet Name="TBL_PRODUCT" EntityType="Self.TBL_PRODUCT" />
+          <EntitySet Name="TBL_ROLES" EntityType="Self.TBL_ROLES" />
+          <EntitySet Name="TBL_SHIPPINGDETAILS" EntityType="Self.TBL_SHIPPINGDETAILS" />
+          <EntitySet Name="TBL_SLIDEIMAGE" EntityType="Self.TBL_SLIDEIMAGE" />
+          <EntitySet Name="EMP_DETAILS_VIEW" EntityType="Self.EMP_DETAILS_VIEW" />
+          <AssociationSet Name="PRODUCT_ID" Association="Self.PRODUCT_ID">
+            <End Role="TBL_PRODUCT" EntitySet="TBL_PRODUCT" />
+            <End Role="TBL_CART" EntitySet="TBL_CART" />
+          </AssociationSet>
+          <AssociationSet Name="CATEGORYID_FK" Association="Self.CATEGORYID_FK">
+            <End Role="TBL_CATEGORY" EntitySet="TBL_CATEGORY" />
+            <End Role="TBL_PRODUCT" EntitySet="TBL_PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="MEMBERS_ID" Association="Self.MEMBERS_ID">
+            <End Role="TBL_MEMBERS" EntitySet="TBL_MEMBERS" />
+            <End Role="TBL_SHIPPINGDETAILS" EntitySet="TBL_SHIPPINGDETAILS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities2">
+          <EntitySetMapping Name="TBL_CART">
+            <EntityTypeMapping TypeName="Model.TBL_CART">
+              <MappingFragment StoreEntitySet="TBL_CART">
+                <ScalarProperty Name="CARTID" ColumnName="CARTID" />
+                <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+                <ScalarProperty Name="MEMBERID" ColumnName="MEMBERID" />
+                <ScalarProperty Name="CARTSTATUSID" ColumnName="CARTSTATUSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CARTSTATUS">
+            <EntityTypeMapping TypeName="Model.TBL_CARTSTATUS">
+              <MappingFragment StoreEntitySet="TBL_CARTSTATUS">
+                <ScalarProperty Name="CARTSTATUSID" ColumnName="CARTSTATUSID" />
+                <ScalarProperty Name="CARTSTATUS" ColumnName="CARTSTATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CATEGORY">
+            <EntityTypeMapping TypeName="Model.TBL_CATEGORY">
+              <MappingFragment StoreEntitySet="TBL_CATEGORY">
+                <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+                <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MEMBERROLE">
+            <EntityTypeMapping TypeName="Model.TBL_MEMBERROLE">
+              <MappingFragment StoreEntitySet="TBL_MEMBERROLE">
+                <ScalarProperty Name="MEMBERROLEID" ColumnName="MEMBERROLEID" />
+                <ScalarProperty Name="MEMBERID" ColumnName="MEMBERID" />
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MEMBERS">
+            <EntityTypeMapping TypeName="Model.TBL_MEMBERS">
+              <MappingFragment StoreEntitySet="TBL_MEMBERS">
+                <ScalarProperty Name="MEMBERID" ColumnName="MEMBERID" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="EMAILID" ColumnName="EMAILID" />
+                <ScalarProperty Name="PASSWORDID" ColumnName="PASSWORDID" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+                <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+                <ScalarProperty Name="MODIFIEDON" ColumnName="MODIFIEDON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PRODUCT">
+            <EntityTypeMapping TypeName="Model.TBL_PRODUCT">
+              <MappingFragment StoreEntitySet="TBL_PRODUCT">
+                <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+                <ScalarProperty Name="PRODUCTNAME" ColumnName="PRODUCTNAME" />
+                <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PRODUCTIMAGE" ColumnName="PRODUCTIMAGE" />
+                <ScalarProperty Name="ISFEATURED" ColumnName="ISFEATURED" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ROLES">
+            <EntityTypeMapping TypeName="Model.TBL_ROLES">
+              <MappingFragment StoreEntitySet="TBL_ROLES">
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SHIPPINGDETAILS">
+            <EntityTypeMapping TypeName="Model.TBL_SHIPPINGDETAILS">
+              <MappingFragment StoreEntitySet="TBL_SHIPPINGDETAILS">
+                <ScalarProperty Name="SHIPPINGDETAILID" ColumnName="SHIPPINGDETAILID" />
+                <ScalarProperty Name="MEMBERID" ColumnName="MEMBERID" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="ZIPCODE" ColumnName="ZIPCODE" />
+                <ScalarProperty Name="ORDERID" ColumnName="ORDERID" />
+                <ScalarProperty Name="AMOUNTPAID" ColumnName="AMOUNTPAID" />
+                <ScalarProperty Name="PAYMENTTYPE" ColumnName="PAYMENTTYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SLIDEIMAGE">
+            <EntityTypeMapping TypeName="Model.TBL_SLIDEIMAGE">
+              <MappingFragment StoreEntitySet="TBL_SLIDEIMAGE">
+                <ScalarProperty Name="SLIDEID" ColumnName="SLIDEID" />
+                <ScalarProperty Name="SLIDTITLE" ColumnName="SLIDTITLE" />
+                <ScalarProperty Name="SLIDEIMAGE" ColumnName="SLIDEIMAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMP_DETAILS_VIEW">
+            <EntityTypeMapping TypeName="Model.EMP_DETAILS_VIEW">
+              <MappingFragment StoreEntitySet="EMP_DETAILS_VIEW">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+                <ScalarProperty Name="MANAGER_ID" ColumnName="MANAGER_ID" />
+                <ScalarProperty Name="DEPARTMENT_ID" ColumnName="DEPARTMENT_ID" />
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="COUNTRY_ID" ColumnName="COUNTRY_ID" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+                <ScalarProperty Name="COMMISSION_PCT" ColumnName="COMMISSION_PCT" />
+                <ScalarProperty Name="DEPARTMENT_NAME" ColumnName="DEPARTMENT_NAME" />
+                <ScalarProperty Name="JOB_TITLE" ColumnName="JOB_TITLE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STATE_PROVINCE" ColumnName="STATE_PROVINCE" />
+                <ScalarProperty Name="COUNTRY_NAME" ColumnName="COUNTRY_NAME" />
+                <ScalarProperty Name="REGION_NAME" ColumnName="REGION_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
